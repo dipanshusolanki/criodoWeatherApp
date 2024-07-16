@@ -14,11 +14,11 @@ function App() {
     };
     const urlParams = new URLSearchParams(params);
     const urlWithParams = `https://api.weatherapi.com/v1/current.json?${urlParams.toString()}`;
-    setIsLoading((prev) => !prev);
+
     if (weatherData) {
       setWeatherData(null);
     }
-
+    setIsLoading(true);
     fetch(urlWithParams)
       .then((response) => {
         const data = response.json();
@@ -29,8 +29,8 @@ function App() {
           alert("Failed to fetch weather data");
         } else {
           setWeatherData(data);
+          setIsLoading(false);
         }
-        setIsLoading((prev) => !prev);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
