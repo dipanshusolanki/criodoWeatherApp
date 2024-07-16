@@ -56,11 +56,7 @@ function App() {
             Search
           </button>
         </div>
-        {isLoading === true && (
-          <>
-            <p>Loading data…</p>
-          </>
-        )}
+        {isLoading === true && <p>Loading data...</p>}
         {weatherData !== null && (
           <>
             <div className="weather-cards">
